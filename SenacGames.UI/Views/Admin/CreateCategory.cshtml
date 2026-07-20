@@ -1,0 +1,27 @@
+@* Nova Categoria *@
+@model CreateCategoryDto
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="form-senac">
+            <form asp-action="CreateCategory" method="post">
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Nome da Categoria</label>
+                    <input asp-for="Name" class="form-control" placeholder="Ex: RPG, Ação, Terror..." required />
+                </div>
+                <hr class="my-4" />
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Categories" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary-senac">
+                        <i class="bi bi-check-lg"></i> Cadastrar Categoria
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+@* =============================================================================
+   SenacGames.UI - Home/Index.cshtml
+   =============================================================================
+   📌 CONCEITO: Razor View
+   Uma View é um arquivo .cshtml que combina HTML com C# (Razor).
+   O @@model define o tipo de dados que a View recebe do Controller.
+
+   DESIGN: Baseado no protótipo Stitch "Home - SenacGames (Style Epic)"
+   - Hero com game destaque
+   - Seção de lançamentos/recentes com cards
+   - Navegação por categorias
+   ============================================================================= *@
+
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+@* =====================================================================
+   HERO SECTION — Game em destaque
+   ===================================================================== *@
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                @{
+                    var featuredGame = Model.FeaturedGames.FirstOrDefault();
+                }
+                @if (featuredGame != null)
+                {
+                    <span class="badge badge-featured mb-3 d-inline-block">
+                        <i class="bi bi-stars"></i> EM DESTAQUE
+                    </span>
+                    <h1 class="display-3 fw-bold font-heading mb-3 text-uppercase">@featuredGame.Title</h1>
+                    <p>@featuredGame.Description</p>
+                    <a asp-controller="Games" asp-action="Details" asp-route-id="@featuredGame.Id"
+                       class="btn btn-accent">
+                        <i class="bi bi-play-fill"></i> Ver Detalhes
+                    </a>
+                }
+                else
+                {
+                    <h1>Bem-vindo ao SenacGames</h1>
+                    <p>Explore nosso catálogo de jogos educacionais</p>
+                }
+            </div>
+            <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                @if (featuredGame != null && !string.IsNullOrEmpty(featuredGame.CoverImageUrl))
+                {
+                    <div class="position-relative d-inline-block">
+                        <!-- Glow effect behind image -->
+                        <div class="position-absolute top-50 start-50 translate-middle" style="width: 100%; height: 100%; background: var(--primary); filter: blur(60px); opacity: 0.3; z-index: 0;"></div>
+                        <img src="@featuredGame.CoverImageUrl" alt="@featuredGame.Title"
+                             class="img-fluid rounded position-relative" style="max-height: 450px; aspect-ratio: 2/3; object-fit: cover; object-position: top center; z-index: 1; box-shadow: var(--shadow-lg), 0 0 0 1px var(--outline);" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@* =====================================================================
+   SEÇÃO DE LANÇAMENTOS — Cards de games recentes
+   ===================================================================== *@
+<section class="section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="mb-0"><i class="bi bi-lightning-charge-fill text-primary me-2"></i> Lançamentos</h2>
+            <a asp-controller="Games" asp-action="Index" class="btn-link">
+                Ver Catálogo <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var game in Model.RecentGames.Take(4))
+            {
+                <div class="col-lg-3 col-md-6 animate-in">
+                    <a asp-controller="Games" asp-action="Details" asp-route-id="@game.Id"
+                       class="text-decoration-none">
+                        <div class="game-card">
+                            @if (!string.IsNullOrEmpty(game.CoverImageUrl))
+                            {
+                                <img src="@game.CoverImageUrl" alt="@game.Title" class="card-img-top" />
+                            }
+                            else
+                            {
+                                <div class="card-img-top d-flex align-items-center justify-content-center"
+                                     style="background: var(--surface-container-high);">
+                                    <i class="bi bi-controller" style="font-size: 3rem; color: var(--on-surface-variant);"></i>
+                                </div>
+                            }
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-category">@game.CategoryName</span>
+                                    @if (game.IsFeatured)
+                                    {
+                                        <span class="badge-featured">
+                                            <i class="bi bi-star-fill"></i> DESTAQUE
+                                        </span>
+                                    }
+                                </div>
+                                <h5 class="card-title">@game.Title</h5>
+                                <p class="card-text">
+                                    @(game.Description.Length > 80 ? game.Description.Substring(0, 80) + "..." : game.Description)
+                                </p>
+                            </div>
+                            <div class="card-footer" style="display:none;">
+                                <span class="release-year">
+                                    <i class="bi bi-calendar3"></i> @game.ReleaseYear
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@* =====================================================================
+   SEÇÃO DE CATEGORIAS — Navegação por gênero
+   ===================================================================== *@
+<section class="section-padding" style="background-color: var(--surface-container);">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="mb-0"><i class="bi bi-grid-3x3-gap-fill text-secondary me-2"></i> Categorias</h2>
+        </div>
+
+        <div class="row g-3">
+            @{
+                // Ícones para cada categoria (baseado no design Stitch)
+                var categoryIcons = new Dictionary<string, string>
+                {
+                    { "Ação", "bi-lightning-charge-fill" },
+                    { "Aventura", "bi-compass-fill" },
+                    { "RPG", "bi-shield-fill" },
+                    { "Corrida", "bi-speedometer" },
+                    { "Esportes", "bi-trophy-fill" },
+                    { "Terror", "bi-emoji-dizzy-fill" },
+                    { "Multiplayer", "bi-people-fill" },
+                    { "Indie", "bi-puzzle-fill" }
+                };
+            }
+            @foreach (var category in Model.Categories)
+            {
+                <div class="col-lg-3 col-md-4 col-6">
+                    <a asp-controller="Games" asp-action="Index" asp-route-categoryId="@category.Id"
+                       class="text-decoration-none">
+                        <div class="category-card">
+                            <i class="bi @(categoryIcons.GetValueOrDefault(category.Name, "bi-tag-fill"))"></i>
+                            <h5>@category.Name</h5>
+                            <small class="text-muted">@category.GameCount games</small>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

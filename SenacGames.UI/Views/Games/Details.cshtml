@@ -1,0 +1,90 @@
+@* Detalhes do Game — Design Stitch *@
+@model GameDetailsViewModel
+@{
+    ViewData["Title"] = Model.Game.Title;
+}
+
+@* Header com background azul *@
+<section class="game-detail-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="game-detail-cover">
+                    @if (!string.IsNullOrEmpty(Model.Game.CoverImageUrl))
+                    {
+                        <img src="@Model.Game.CoverImageUrl" alt="@Model.Game.Title" />
+                    }
+                    else
+                    {
+                        <div class="d-flex align-items-center justify-content-center" style="height: 350px; background: var(--surface-container-high);">
+                            <i class="bi bi-controller" style="font-size: 5rem; color: var(--on-surface-variant);"></i>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="game-detail-info">
+                    <div class="game-meta">
+                        <span><i class="bi bi-tag-fill"></i> @Model.Game.CategoryName</span>
+                        <span><i class="bi bi-calendar3"></i> @Model.Game.ReleaseYear</span>
+                        @if (Model.Game.IsFeatured)
+                        {
+                            <span class="highlight">
+                                <i class="bi bi-star-fill"></i> Destaque
+                            </span>
+                        }
+                    </div>
+                    <h1>@Model.Game.Title</h1>
+                    <p class="mt-3" style="font-size: 1.1rem; opacity: 0.9;">
+                        @Model.Game.Description
+                    </p>
+                    <a asp-controller="Games" asp-action="Index" class="btn btn-outline-light mt-3">
+                        <i class="bi bi-arrow-left"></i> Voltar ao Catálogo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* Games relacionados *@
+@if (Model.RelatedGames.Any())
+{
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Games Relacionados</h2>
+            </div>
+            <div class="row g-4">
+                @foreach (var game in Model.RelatedGames)
+                {
+                    <div class="col-lg-3 col-md-6">
+                        <a asp-controller="Games" asp-action="Details" asp-route-id="@game.Id"
+                           class="text-decoration-none">
+                            <div class="game-card">
+                                @if (!string.IsNullOrEmpty(game.CoverImageUrl))
+                                {
+                                    <img src="@game.CoverImageUrl" alt="@game.Title" class="card-img-top" />
+                                }
+                                else
+                                {
+                                    <div class="card-img-top d-flex align-items-center justify-content-center"
+                                         style="background: var(--surface-container-high);">
+                                        <i class="bi bi-controller" style="font-size: 3rem; color: var(--on-surface-variant);"></i>
+                                    </div>
+                                }
+                                <div class="card-body">
+                                    <span class="badge-category">@game.CategoryName</span>
+                                    <h5 class="card-title mt-2">@game.Title</h5>
+                                </div>
+                                <div class="card-footer" style="display:none;">
+                                    <span class="release-year">@game.ReleaseYear</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

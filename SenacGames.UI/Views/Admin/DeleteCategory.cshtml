@@ -1,0 +1,39 @@
+@* Confirmar Exclusão de Categoria *@
+@model CategoryDto
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="form-senac text-center">
+            <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 3rem;"></i>
+            <h4 class="mt-3">Confirmar Exclusão</h4>
+            <p class="text-muted-senac">Deseja realmente excluir a categoria abaixo?</p>
+
+            <div class="rounded p-3 my-3" style="background-color: var(--surface-container-high);">
+                <h5 class="mb-1">@Model.Name</h5>
+                <small class="text-muted-senac">@Model.GameCount games associados</small>
+            </div>
+
+            @if (Model.GameCount > 0)
+            {
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-circle"></i>
+                    Esta categoria possui games associados e não pode ser excluída.
+                </div>
+            }
+
+            <div class="d-flex justify-content-center gap-3">
+                <a asp-action="Categories" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Cancelar
+                </a>
+                <form asp-action="DeleteCategoryConfirmed" asp-route-id="@Model.Id" method="post">
+                    <button type="submit" class="btn btn-danger" @(Model.GameCount > 0 ? "disabled" : "")>
+                        <i class="bi bi-trash"></i> Excluir Categoria
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

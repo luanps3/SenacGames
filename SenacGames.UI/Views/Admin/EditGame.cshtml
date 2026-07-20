@@ -1,0 +1,59 @@
+@* Editar Game *@
+@model GameFormViewModel
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="form-senac">
+            <form asp-action="EditGame" asp-route-id="@Model.Id" method="post">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label asp-for="Title" class="form-label">Título do Game</label>
+                        <input asp-for="Title" class="form-control" required />
+                    </div>
+                    <div class="col-12">
+                        <label asp-for="Description" class="form-label">Descrição</label>
+                        <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="ReleaseYear" class="form-label">Ano de Lançamento</label>
+                        <input asp-for="ReleaseYear" type="number" class="form-control" min="1980" max="2030" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="CategoryId" class="form-label">Categoria</label>
+                        <select asp-for="CategoryId" class="form-select" required>
+                            <option value="">Selecione</option>
+                            @foreach (var category in Model.Categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label asp-for="CoverImageUrl" class="form-label">URL da Imagem</label>
+                        <input asp-for="CoverImageUrl" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input asp-for="IsFeatured" class="form-check-input" type="checkbox" />
+                            <label asp-for="IsFeatured" class="form-check-label">
+                                <i class="bi bi-star-fill text-warning"></i> Destaque
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4" />
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Games" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary-senac">
+                        <i class="bi bi-check-lg"></i> Salvar Alterações
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

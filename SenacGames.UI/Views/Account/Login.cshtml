@@ -1,0 +1,85 @@
+@* Login — Design Stitch (Style Epic) *@
+@model LoginDto
+@{
+    ViewData["Title"] = "Login";
+    Layout = null; // Sem layout — página fullscreen
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - SenacGames</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Theme Toggle Script -->
+    <script src="~/js/theme.js"></script>
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-card animate-in">
+            <div class="auth-logo">
+                <img src="~/images/logo.png" alt="SenacGames Logo" class="brand-logo mb-3" style="height: 60px;" />
+                <p>Acesse sua conta para continuar</p>
+            </div>
+
+            @* Exibe erros de validação *@
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger py-2" role="alert">
+                    <small>
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <span>@error.ErrorMessage</span><br />
+                        }
+                    </small>
+                </div>
+            }
+
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input asp-for="Email" type="email" class="form-control"
+                               placeholder="seu@@email.com" required />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Senha</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input asp-for="Password" type="password" class="form-control"
+                               placeholder="••••••••" required />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary-senac w-100 py-2 mt-2">
+                    <i class="bi bi-box-arrow-in-right"></i> Entrar
+                </button>
+            </form>
+
+            <div class="text-center mt-4">
+                <small class="text-muted">
+                    Ainda não tem uma conta?
+                    <a asp-controller="Account" asp-action="Register" class="text-primary fw-semibold">
+                        Criar conta
+                    </a>
+                </small>
+            </div>
+
+            <div class="text-center mt-2">
+                <a asp-controller="Home" asp-action="Index" class="text-muted small">
+                    <i class="bi bi-arrow-left"></i> Voltar para Home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

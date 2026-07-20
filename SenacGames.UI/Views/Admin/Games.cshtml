@@ -1,0 +1,58 @@
+@* Gerenciar Games — Design Stitch *@
+@model IEnumerable<GameDto>
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div></div>
+    <a asp-action="CreateGame" class="btn btn-primary-senac">
+        <i class="bi bi-plus-circle"></i> Novo Game
+    </a>
+</div>
+
+<div class="table-senac">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Categoria</th>
+                <th>Ano</th>
+                <th>Destaque</th>
+                <th class="text-end">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in Model)
+            {
+                <tr>
+                    <td class="text-muted">@game.Id</td>
+                    <td class="fw-semibold">@game.Title</td>
+                    <td><span class="badge-category">@game.CategoryName</span></td>
+                    <td>@game.ReleaseYear</td>
+                    <td>
+                        @if (game.IsFeatured)
+                        {
+                            <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i></span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">—</span>
+                        }
+                    </td>
+                    <td class="text-end">
+                        <a asp-action="EditGame" asp-route-id="@game.Id"
+                           class="btn btn-sm btn-outline-primary me-1" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a asp-action="DeleteGame" asp-route-id="@game.Id"
+                           class="btn btn-sm btn-outline-danger" title="Excluir">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

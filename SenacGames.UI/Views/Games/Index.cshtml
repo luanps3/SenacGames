@@ -1,0 +1,82 @@
+@* Catálogo de Games — Design Stitch *@
+@model GameListViewModel
+@{
+    ViewData["Title"] = "Catálogo de Games";
+}
+
+<div class="container section-padding">
+    <div class="section-header">
+        <h2><i class="bi bi-collection-fill text-primary"></i> Catálogo de Games</h2>
+    </div>
+
+    @* Filtro por categorias *@
+    <div class="category-filter">
+        <a asp-controller="Games" asp-action="Index"
+           class="btn @(Model.SelectedCategoryId == null ? "active" : "")">
+            Todos
+        </a>
+        @foreach (var category in Model.Categories)
+        {
+            <a asp-controller="Games" asp-action="Index" asp-route-categoryId="@category.Id"
+               class="btn @(Model.SelectedCategoryId == category.Id ? "active" : "")">
+                @category.Name
+            </a>
+        }
+    </div>
+
+    @* Grid de Games *@
+    <div class="row g-4">
+        @if (Model.Games.Any())
+        {
+            @foreach (var game in Model.Games)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 animate-in">
+                    <a asp-controller="Games" asp-action="Details" asp-route-id="@game.Id"
+                       class="text-decoration-none">
+                        <div class="game-card">
+                            @if (!string.IsNullOrEmpty(game.CoverImageUrl))
+                            {
+                                <img src="@game.CoverImageUrl" alt="@game.Title" class="card-img-top" />
+                            }
+                            else
+                            {
+                                <div class="card-img-top d-flex align-items-center justify-content-center"
+                                     style="background: var(--surface-container-high);">
+                                    <i class="bi bi-controller" style="font-size: 3rem; color: var(--on-surface-variant);"></i>
+                                </div>
+                            }
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-category">@game.CategoryName</span>
+                                    @if (game.IsFeatured)
+                                    {
+                                        <span class="badge badge-featured">
+                                            <i class="bi bi-stars"></i> DESTAQUE
+                                        </span>
+                                    }
+                                </div>
+                                <h5 class="card-title">@game.Title</h5>
+                                <p class="card-text">
+                                    @(game.Description.Length > 100 ? game.Description.Substring(0, 100) + "..." : game.Description)
+                                </p>
+                            </div>
+                            <div class="card-footer" style="display:none;">
+                                <span class="release-year">
+                                    <i class="bi bi-calendar3"></i> @game.ReleaseYear
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-controller text-muted" style="font-size: 4rem;"></i>
+                <h4 class="mt-3 text-muted">Nenhum game encontrado</h4>
+                <p class="text-muted">Tente selecionar outra categoria.</p>
+            </div>
+        }
+    </div>
+</div>

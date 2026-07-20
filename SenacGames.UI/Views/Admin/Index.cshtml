@@ -1,0 +1,85 @@
+@* Dashboard Admin — Design Stitch *@
+@model DashboardViewModel
+@{
+    Layout = "_AdminLayout";
+}
+
+@* Cards de métricas *@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0 text-uppercase" style="color: var(--on-surface);">Visão Geral</h3>
+    </div>
+    <div class="d-none d-md-block opacity-25">
+        <img src="~/images/logo.png" alt="SenacGames" class="brand-logo" style="height: 50px; filter: grayscale(100%);" />
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-lg-4">
+        <div class="stat-card">
+            <div class="stat-icon primary">
+                <i class="bi bi-controller"></i>
+            </div>
+            <div class="stat-number">@Model.TotalGames</div>
+            <div class="stat-label">Total de Games</div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="stat-card">
+            <div class="stat-icon secondary">
+                <i class="bi bi-tags"></i>
+            </div>
+            <div class="stat-number">@Model.TotalCategories</div>
+            <div class="stat-label">Categorias Ativas</div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="stat-card">
+            <div class="stat-icon success">
+                <i class="bi bi-star-fill"></i>
+            </div>
+            <div class="stat-number">@Model.FeaturedGames</div>
+            <div class="stat-label">Games em Destaque</div>
+        </div>
+    </div>
+</div>
+
+@* Últimos games adicionados *@
+<div class="table-senac">
+    <div class="p-3 d-flex justify-content-between align-items-center">
+        <h5 class="mb-0 fw-bold">
+            <i class="bi bi-clock-history text-primary me-2"></i>Últimos Games Adicionados
+        </h5>
+        <a asp-action="Games" class="btn btn-sm btn-outline-senac">Ver todos</a>
+    </div>
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Categoria</th>
+                <th>Ano</th>
+                <th>Destaque</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in Model.RecentGames)
+            {
+                <tr>
+                    <td class="fw-semibold">@game.Title</td>
+                    <td><span class="badge-category">@game.CategoryName</span></td>
+                    <td>@game.ReleaseYear</td>
+                    <td>
+                        @if (game.IsFeatured)
+                        {
+                            <span class="badge badge-featured"><i class="bi bi-stars"></i> Sim</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Não</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,112 @@
+@* =============================================================================
+   SenacGames.UI - Layout Administrativo (_AdminLayout.cshtml)
+   =============================================================================
+   📌 CONCEITO: Layout Admin com Sidebar
+   Este layout é usado nas páginas administrativas.
+   Possui uma SIDEBAR fixa à esquerda e o conteúdo à direita.
+
+   DESIGN: Baseado no protótipo Stitch "Dashboard Admin - SenacGames"
+   ============================================================================= *@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SenacGames Admin</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    
+    <!-- Theme Toggle Script -->
+    <script src="~/js/theme.js"></script>
+</head>
+<body>
+    @* =====================================================================
+       SIDEBAR ADMINISTRATIVA — Design Stitch
+       ===================================================================== *@
+    <aside class="admin-sidebar">
+        @* Cabeçalho da sidebar *@
+        <div class="sidebar-header text-center">
+            <img src="~/images/logo.png" alt="SenacGames Logo" class="brand-logo mb-2" />
+        </div>
+
+        @* Menu de navegação *@
+        <nav class="nav flex-column mt-3">
+            <a class="nav-link @(ViewData["ActiveMenu"]?.ToString() == "Dashboard" ? "active" : "")"
+               asp-controller="Admin" asp-action="Index">
+                <i class="bi bi-speedometer2"></i> Dashboard
+            </a>
+            <a class="nav-link @(ViewData["ActiveMenu"]?.ToString() == "Games" ? "active" : "")"
+               asp-controller="Admin" asp-action="Games">
+                <i class="bi bi-controller"></i> Games
+            </a>
+            <a class="nav-link @(ViewData["ActiveMenu"]?.ToString() == "Categories" ? "active" : "")"
+               asp-controller="Admin" asp-action="Categories">
+                <i class="bi bi-tags"></i> Categorias
+            </a>
+        </nav>
+
+        @* Separador e links adicionais *@
+        <div class="sidebar-footer">
+            <button onclick="toggleTheme()" class="nav-link border-0 bg-transparent w-100 text-start mb-2" title="Alternar Tema">
+                <i class="bi bi-moon-fill theme-toggle-icon"></i> Alternar Tema
+            </button>
+            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                <i class="bi bi-house-door"></i> Ver Site
+            </a>
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit" class="nav-link border-0 bg-transparent w-100 text-start">
+                    <i class="bi bi-box-arrow-left"></i> Sair
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    @* =====================================================================
+       CONTEÚDO PRINCIPAL (à direita da sidebar)
+       ===================================================================== *@
+    <div class="admin-content">
+        @* Breadcrumb / Header *@
+        <div class="page-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1>@ViewData["Title"]</h1>
+                    @if (ViewData["Subtitle"] != null)
+                    {
+                        <p class="text-muted-senac mb-0">@ViewData["Subtitle"]</p>
+                    }
+                </div>
+                @if (ViewData["ActionButton"] != null)
+                {
+                    @RenderSection("ActionButton", required: false)
+                }
+            </div>
+        </div>
+
+        @* Mensagens de feedback (TempData) *@
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-circle-fill me-2"></i>@TempData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+
+        @* Conteúdo da página *@
+        @RenderBody()
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
