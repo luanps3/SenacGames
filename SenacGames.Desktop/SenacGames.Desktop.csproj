@@ -11,7 +11,10 @@
   <ItemGroup>
     <Folder Include="UserControls\" />
     <Folder Include="Themes\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SenacGames.UI\SenacGames.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
