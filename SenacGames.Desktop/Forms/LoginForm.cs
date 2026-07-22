@@ -16,5 +16,21 @@ namespace SenacGames.Desktop.Forms
         {
             InitializeComponent();
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblBemVindo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+
+        }
     }
 }

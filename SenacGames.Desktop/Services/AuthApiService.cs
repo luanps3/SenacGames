@@ -46,8 +46,7 @@ namespace SenacGames.Desktop.Services
         /// <param name="email">E-mail do usuário</param>
         /// <param name="password">Senha do usuário</param>
         /// <returns>Tupla com sucesso, dados do usuário e mensagem de erro</returns>
-        public async Task<(bool Sucesso, UserResponseDto? User, string ErrorMessage)> 
-            LoginAsync(string email, string password)
+        public async Task<(bool Sucesso, UserResponseDto? User, string ErrorMessage)> LoginAsync(string email, string password)
         {
             var loginDto = new LoginRequestDto
             {

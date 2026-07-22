@@ -121,7 +121,7 @@
   <data name="pbLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAHgAAABXCAYAAADPnoExAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAAAYpklEQVR4Xu1dCVgUR/Z/Zt0krsk/
+        DAAACwwBP0AiyAAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAAAYpklEQVR4Xu1dCVgUR/Z/Zt0krsk/
         aDTqRplGQbMkGo2rRqMw3qsRRGC4B7nBiILigaKOB+cM9wAioICoEbwVTYzxyLGJbjbRmE3WbLLR1fw1
         ya5XhBmu6bdfVXfP9PQAmqx4JP37vnKY6bq6fu+9evWquwSQIUOGDBkyZMiQIUOGDBkyZMiQIUOGDBky
         ZMiQIUMGh0fpvxODnwa/8h9BVXAL/EorYGR4APR/xR4AO0nyk+/S32Q8gCAkdaZ/jU8cDq+9YQTvAgTv
@@ -230,4 +230,7 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="guna2BorderlessForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
