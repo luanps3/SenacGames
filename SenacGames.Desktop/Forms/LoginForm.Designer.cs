@@ -52,6 +52,8 @@
             lblProblemas = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblApi = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblVersao = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblErro = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblCarregando = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
             // 
@@ -82,8 +84,9 @@
             txtEmail.PlaceholderText = "seuemail@senacgames.com";
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtEmail.Size = new Size(360, 36);
+            txtEmail.Size = new Size(357, 36);
             txtEmail.TabIndex = 3;
+            txtEmail.KeyDown += txtEmail_KeyDown;
             // 
             // txtSenha
             // 
@@ -102,9 +105,10 @@
             txtSenha.PlaceholderText = "•••••••••••";
             txtSenha.SelectedText = "";
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtSenha.Size = new Size(360, 36);
+            txtSenha.Size = new Size(357, 36);
             txtSenha.TabIndex = 3;
             txtSenha.UseSystemPasswordChar = true;
+            txtSenha.KeyDown += txtSenha_KeyDown;
             // 
             // btnEntrar
             // 
@@ -120,9 +124,10 @@
             btnEntrar.Location = new Point(18, 307);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnEntrar.Size = new Size(360, 62);
+            btnEntrar.Size = new Size(357, 53);
             btnEntrar.TabIndex = 4;
             btnEntrar.Text = "Entrar";
+            btnEntrar.Click += btnEntrar_Click;
             // 
             // guna2BorderlessForm1
             // 
@@ -176,7 +181,7 @@
             pnSeparador.BackColor = SystemColors.ActiveCaption;
             pnSeparador.BorderStyle = BorderStyle.FixedSingle;
             pnSeparador.ForeColor = SystemColors.MenuHighlight;
-            pnSeparador.Location = new Point(23, 126);
+            pnSeparador.Location = new Point(23, 133);
             pnSeparador.Name = "pnSeparador";
             pnSeparador.Size = new Size(360, 1);
             pnSeparador.TabIndex = 8;
@@ -206,7 +211,7 @@
             pnSeparador2.BackColor = SystemColors.ActiveCaption;
             pnSeparador2.BorderStyle = BorderStyle.FixedSingle;
             pnSeparador2.ForeColor = SystemColors.MenuHighlight;
-            pnSeparador2.Location = new Point(18, 400);
+            pnSeparador2.Location = new Point(18, 390);
             pnSeparador2.Name = "pnSeparador2";
             pnSeparador2.Size = new Size(360, 1);
             pnSeparador2.TabIndex = 8;
@@ -244,17 +249,43 @@
             lblVersao.Text = "Versão: 1.0.0 | ©️ Senac São Miguel Paulista";
             lblVersao.TextAlignment = ContentAlignment.TopCenter;
             // 
+            // lblErro
+            // 
+            lblErro.BackColor = Color.Transparent;
+            lblErro.ForeColor = Color.Maroon;
+            lblErro.Location = new Point(18, 451);
+            lblErro.Name = "lblErro";
+            lblErro.Size = new Size(24, 17);
+            lblErro.TabIndex = 7;
+            lblErro.Text = "Erro";
+            lblErro.TextAlignment = ContentAlignment.TopCenter;
+            lblErro.Visible = false;
+            // 
+            // lblCarregando
+            // 
+            lblCarregando.BackColor = Color.Transparent;
+            lblCarregando.ForeColor = SystemColors.ControlDark;
+            lblCarregando.Location = new Point(158, 366);
+            lblCarregando.Name = "lblCarregando";
+            lblCarregando.Size = new Size(84, 17);
+            lblCarregando.TabIndex = 7;
+            lblCarregando.Text = "Autenticando...";
+            lblCarregando.TextAlignment = ContentAlignment.TopCenter;
+            lblCarregando.Visible = false;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(398, 502);
+            ClientSize = new Size(390, 502);
             Controls.Add(lblSenha);
             Controls.Add(lblEmail);
             Controls.Add(pnSeparador2);
             Controls.Add(pnSeparador);
             Controls.Add(lblVersao);
+            Controls.Add(lblErro);
             Controls.Add(lblApi);
+            Controls.Add(lblCarregando);
             Controls.Add(lblProblemas);
             Controls.Add(lblTextoFacaLogin);
             Controls.Add(lblBemVindo);
@@ -289,5 +320,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblProblemas;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblApi;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblVersao;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblErro;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblCarregando;
     }
 }

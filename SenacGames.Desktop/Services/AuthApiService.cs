@@ -33,6 +33,11 @@ namespace SenacGames.Desktop.Services
     {
         private readonly HttpClientHelper _http;
 
+        public AuthApiService()
+        {
+            _http = HttpClientHelper.Instance;
+        }
+
         /// <summary>
         /// Realiza o login chamando POST /api/auth/login.
         ///
@@ -77,7 +82,7 @@ namespace SenacGames.Desktop.Services
         /// Busca os dados do usuário autenticado via GET /api/auth/me.
         /// Útil para verificar se a sessão ainda está ativa
         /// </summary>
-        public async Task<UserResponseDto> GetCurrentUserAsync()
+        public async Task<UserResponseDto?> GetCurrentUserAsync()
         {
             return await _http.GetAsync<UserResponseDto>("/api/auth/me");
         }
@@ -98,11 +103,5 @@ namespace SenacGames.Desktop.Services
             var (success, _, error) = await _http.PostAsync<object>("/api/auth/register", dto);
             return (success, error);
         }
-
-
-
-
-
-
     }
 }
