@@ -34,6 +34,9 @@ namespace SenacGames.Desktop.Forms
 
             lblVersao.Text = $"Versão {AppConfig.Version} | ©️ {DateTime.Now.Year} SENAC-SMP";
             lblApi.Text = $"API: {AppConfig.ApiBaseUrl}";
+
+            txtEmail.Text = "admin@senacgames.com";
+            txtSenha.Text = "Admin@123";
         }
 
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)

@@ -85,7 +85,7 @@
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtEmail.Size = new Size(357, 36);
-            txtEmail.TabIndex = 3;
+            txtEmail.TabIndex = 0;
             txtEmail.KeyDown += txtEmail_KeyDown;
             // 
             // txtSenha
@@ -106,7 +106,7 @@
             txtSenha.SelectedText = "";
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtSenha.Size = new Size(357, 36);
-            txtSenha.TabIndex = 3;
+            txtSenha.TabIndex = 1;
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.KeyDown += txtSenha_KeyDown;
             // 
@@ -125,7 +125,7 @@
             btnEntrar.Name = "btnEntrar";
             btnEntrar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnEntrar.Size = new Size(357, 53);
-            btnEntrar.TabIndex = 4;
+            btnEntrar.TabIndex = 2;
             btnEntrar.Text = "Entrar";
             btnEntrar.Click += btnEntrar_Click;
             // 
