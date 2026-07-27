@@ -121,6 +121,7 @@
             btnLogout.Size = new Size(90, 33);
             btnLogout.TabIndex = 1;
             btnLogout.Text = "Sair";
+            btnLogout.Click += btnLogout_Click;
             // 
             // lblTituloApp
             // 

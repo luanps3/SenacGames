@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             lblTitulo = new Label();
             lblSubtitulo = new Label();
             lblCarregando = new Label();
             cardCategoriasLblDesc = new Label();
             lblUltimosGames = new Label();
             cardGames = new Guna.UI2.WinForms.Guna2Panel();
-            cardCategorias = new Guna.UI2.WinForms.Guna2Panel();
-            cardGamesLblTitulo = new Label();
-            cardCategoriasLblTitulo = new Label();
-            cardGamesLblNumero = new Label();
-            cardCategoriasLblNumero = new Label();
-            cardGamesLblDesc = new Label();
             pnlCorGames = new Guna.UI2.WinForms.Guna2Panel();
+            cardGamesLblDesc = new Label();
+            cardGamesLblNumero = new Label();
+            cardGamesLblTitulo = new Label();
+            cardCategorias = new Guna.UI2.WinForms.Guna2Panel();
+            cardCategoriasLblNumero = new Label();
+            cardCategoriasLblTitulo = new Label();
             pnlCorCategorias = new Guna.UI2.WinForms.Guna2Panel();
             gridUltimosGames = new DataGridView();
             colId = new DataGridViewTextBoxColumn();
@@ -123,72 +123,23 @@
             cardGames.Controls.Add(cardGamesLblDesc);
             cardGames.Controls.Add(cardGamesLblNumero);
             cardGames.Controls.Add(cardGamesLblTitulo);
-            cardGames.CustomizableEdges = customizableEdges11;
+            cardGames.CustomizableEdges = customizableEdges3;
             cardGames.FillColor = Color.White;
             cardGames.Location = new Point(25, 108);
             cardGames.Name = "cardGames";
-            cardGames.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            cardGames.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cardGames.Size = new Size(210, 120);
             cardGames.TabIndex = 1;
             // 
-            // cardCategorias
+            // pnlCorGames
             // 
-            cardCategorias.Controls.Add(cardCategoriasLblNumero);
-            cardCategorias.Controls.Add(cardCategoriasLblTitulo);
-            cardCategorias.Controls.Add(cardCategoriasLblDesc);
-            cardCategorias.CustomizableEdges = customizableEdges13;
-            cardCategorias.FillColor = Color.White;
-            cardCategorias.Location = new Point(262, 108);
-            cardCategorias.Name = "cardCategorias";
-            cardCategorias.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            cardCategorias.Size = new Size(210, 120);
-            cardCategorias.TabIndex = 1;
-            // 
-            // cardGamesLblTitulo
-            // 
-            cardGamesLblTitulo.AutoSize = true;
-            cardGamesLblTitulo.BackColor = Color.White;
-            cardGamesLblTitulo.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            cardGamesLblTitulo.ForeColor = Color.FromArgb(0, 77, 147);
-            cardGamesLblTitulo.Location = new Point(12, 19);
-            cardGamesLblTitulo.Name = "cardGamesLblTitulo";
-            cardGamesLblTitulo.Size = new Size(89, 19);
-            cardGamesLblTitulo.TabIndex = 1;
-            cardGamesLblTitulo.Text = "🎮 Games";
-            // 
-            // cardCategoriasLblTitulo
-            // 
-            cardCategoriasLblTitulo.AutoSize = true;
-            cardCategoriasLblTitulo.BackColor = Color.White;
-            cardCategoriasLblTitulo.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            cardCategoriasLblTitulo.ForeColor = Color.FromArgb(248, 148, 27);
-            cardCategoriasLblTitulo.Location = new Point(20, 19);
-            cardCategoriasLblTitulo.Name = "cardCategoriasLblTitulo";
-            cardCategoriasLblTitulo.Size = new Size(117, 19);
-            cardCategoriasLblTitulo.TabIndex = 1;
-            cardCategoriasLblTitulo.Text = "🏷️ Categorias";
-            // 
-            // cardGamesLblNumero
-            // 
-            cardGamesLblNumero.AutoSize = true;
-            cardGamesLblNumero.BackColor = Color.White;
-            cardGamesLblNumero.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cardGamesLblNumero.Location = new Point(12, 38);
-            cardGamesLblNumero.Name = "cardGamesLblNumero";
-            cardGamesLblNumero.Size = new Size(38, 45);
-            cardGamesLblNumero.TabIndex = 2;
-            cardGamesLblNumero.Text = "0";
-            // 
-            // cardCategoriasLblNumero
-            // 
-            cardCategoriasLblNumero.AutoSize = true;
-            cardCategoriasLblNumero.BackColor = Color.White;
-            cardCategoriasLblNumero.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cardCategoriasLblNumero.Location = new Point(20, 38);
-            cardCategoriasLblNumero.Name = "cardCategoriasLblNumero";
-            cardCategoriasLblNumero.Size = new Size(38, 45);
-            cardCategoriasLblNumero.TabIndex = 2;
-            cardCategoriasLblNumero.Text = "0";
+            pnlCorGames.CustomizableEdges = customizableEdges1;
+            pnlCorGames.FillColor = Color.FromArgb(0, 77, 147);
+            pnlCorGames.Location = new Point(0, 0);
+            pnlCorGames.Name = "pnlCorGames";
+            pnlCorGames.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            pnlCorGames.Size = new Size(210, 10);
+            pnlCorGames.TabIndex = 2;
             // 
             // cardGamesLblDesc
             // 
@@ -202,23 +153,72 @@
             cardGamesLblDesc.TabIndex = 3;
             cardGamesLblDesc.Text = "Total de games cadastrados";
             // 
-            // pnlCorGames
+            // cardGamesLblNumero
             // 
-            pnlCorGames.CustomizableEdges = customizableEdges9;
-            pnlCorGames.FillColor = Color.FromArgb(0, 77, 147);
-            pnlCorGames.Location = new Point(0, 0);
-            pnlCorGames.Name = "pnlCorGames";
-            pnlCorGames.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            pnlCorGames.Size = new Size(210, 10);
-            pnlCorGames.TabIndex = 2;
+            cardGamesLblNumero.AutoSize = true;
+            cardGamesLblNumero.BackColor = Color.White;
+            cardGamesLblNumero.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cardGamesLblNumero.Location = new Point(12, 38);
+            cardGamesLblNumero.Name = "cardGamesLblNumero";
+            cardGamesLblNumero.Size = new Size(38, 45);
+            cardGamesLblNumero.TabIndex = 2;
+            cardGamesLblNumero.Text = "0";
+            // 
+            // cardGamesLblTitulo
+            // 
+            cardGamesLblTitulo.AutoSize = true;
+            cardGamesLblTitulo.BackColor = Color.White;
+            cardGamesLblTitulo.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            cardGamesLblTitulo.ForeColor = Color.FromArgb(0, 77, 147);
+            cardGamesLblTitulo.Location = new Point(12, 19);
+            cardGamesLblTitulo.Name = "cardGamesLblTitulo";
+            cardGamesLblTitulo.Size = new Size(89, 19);
+            cardGamesLblTitulo.TabIndex = 1;
+            cardGamesLblTitulo.Text = "🎮 Games";
+            // 
+            // cardCategorias
+            // 
+            cardCategorias.Controls.Add(cardCategoriasLblNumero);
+            cardCategorias.Controls.Add(cardCategoriasLblTitulo);
+            cardCategorias.Controls.Add(cardCategoriasLblDesc);
+            cardCategorias.CustomizableEdges = customizableEdges5;
+            cardCategorias.FillColor = Color.White;
+            cardCategorias.Location = new Point(262, 108);
+            cardCategorias.Name = "cardCategorias";
+            cardCategorias.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            cardCategorias.Size = new Size(210, 120);
+            cardCategorias.TabIndex = 1;
+            // 
+            // cardCategoriasLblNumero
+            // 
+            cardCategoriasLblNumero.AutoSize = true;
+            cardCategoriasLblNumero.BackColor = Color.White;
+            cardCategoriasLblNumero.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cardCategoriasLblNumero.Location = new Point(20, 38);
+            cardCategoriasLblNumero.Name = "cardCategoriasLblNumero";
+            cardCategoriasLblNumero.Size = new Size(38, 45);
+            cardCategoriasLblNumero.TabIndex = 2;
+            cardCategoriasLblNumero.Text = "0";
+            // 
+            // cardCategoriasLblTitulo
+            // 
+            cardCategoriasLblTitulo.AutoSize = true;
+            cardCategoriasLblTitulo.BackColor = Color.White;
+            cardCategoriasLblTitulo.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            cardCategoriasLblTitulo.ForeColor = Color.FromArgb(248, 148, 27);
+            cardCategoriasLblTitulo.Location = new Point(20, 19);
+            cardCategoriasLblTitulo.Name = "cardCategoriasLblTitulo";
+            cardCategoriasLblTitulo.Size = new Size(117, 19);
+            cardCategoriasLblTitulo.TabIndex = 1;
+            cardCategoriasLblTitulo.Text = "🏷️ Categorias";
             // 
             // pnlCorCategorias
             // 
-            pnlCorCategorias.CustomizableEdges = customizableEdges15;
+            pnlCorCategorias.CustomizableEdges = customizableEdges7;
             pnlCorCategorias.FillColor = Color.FromArgb(248, 148, 27);
             pnlCorCategorias.Location = new Point(262, 108);
             pnlCorCategorias.Name = "pnlCorCategorias";
-            pnlCorCategorias.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            pnlCorCategorias.ShadowDecoration.CustomizableEdges = customizableEdges8;
             pnlCorCategorias.Size = new Size(210, 10);
             pnlCorCategorias.TabIndex = 2;
             // 
@@ -279,6 +279,7 @@
             Controls.Add(lblTitulo);
             Name = "DashboardUserControl";
             Size = new Size(715, 436);
+            Load += DashboardUserControl_Load;
             cardGames.ResumeLayout(false);
             cardGames.PerformLayout();
             cardCategorias.ResumeLayout(false);

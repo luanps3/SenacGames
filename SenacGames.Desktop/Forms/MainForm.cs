@@ -47,7 +47,7 @@ namespace SenacGames.Desktop.Forms
         private void MainForm_Load(object sender, EventArgs e)
         {
             //Guard: não executa em tempo de design
-            if(DesignMode) return;
+            if (DesignMode) return;
 
             //Instancia o serviço
             _authService = new AuthApiService();
@@ -56,13 +56,13 @@ namespace SenacGames.Desktop.Forms
             this.Text = $"SenacGames Desktop - {AppConfig.Version}";
 
             //Preenche dados dinâmicos de sessão no header
-            lblUsuario.Text = $"👷‍ {SessionManager.Instance.GetDisplayName}";
+            lblUsuario.Text = $"👷‍ {SessionManager.Instance.GetDisplayName()}";
             lblPerfil.Text = SessionManager.Instance.IsAdmin ? "🔑 Administrador" : "👀 Usuário Comum";
-            lblPerfil.ForeColor = SessionManager.Instance.IsAdmin 
-                ?SenacTheme.LaranjaPrimario 
+            lblPerfil.ForeColor = SessionManager.Instance.IsAdmin
+                ? SenacTheme.LaranjaPrimario
                 : SenacTheme.AzulVariante;
             lblSessao.Text = $"🟢 {SessionManager.Instance.GetEmail()}";
-            
+
             // Configura permissões baseadas no perfil do usuário
             ConfigurarPermissoes();
 
@@ -118,5 +118,29 @@ namespace SenacGames.Desktop.Forms
             }
         }
 
+        private async Task btnLogout_Click(object sender, EventArgs e)
+        {
+            var resposta = MessageBox.Show(
+                "Deseja realmente sair do sistema?", 
+                "Confirmar Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resposta != DialogResult.Yes) return;
+
+            try
+            {
+                await _authService.LogoutAsync();
+            }
+            catch
+            {
+                // Mesmo se a API falhar, limpa a sessão local
+            }
+            finally
+            {
+                SessionManager.Instance.Clear();
+                this.Close();
+            }
+        }
     }
 }
