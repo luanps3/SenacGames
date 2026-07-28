@@ -118,10 +118,10 @@ namespace SenacGames.Desktop.Forms
             }
         }
 
-        private async Task btnLogout_Click(object sender, EventArgs e)
+        private async void btnLogout_Click(object sender, EventArgs e)
         {
             var resposta = MessageBox.Show(
-                "Deseja realmente sair do sistema?", 
+                "Deseja realmente sair do sistema?",
                 "Confirmar Logout",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
@@ -142,5 +142,11 @@ namespace SenacGames.Desktop.Forms
                 this.Close();
             }
         }
+
+        private void btnDashboard_Click(object sender, EventArgs e) =>
+            Navegar(new DashboardUserControl(), btnDashboard);
+
+        private void btnCategorias_Click(object sender, EventArgs e) =>
+            Navegar(new CategoriasUserControl(), btnCategorias);
     }
 }

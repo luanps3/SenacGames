@@ -68,8 +68,11 @@ namespace SenacGames.Desktop.UserControls
                 var categorias = tarefaCategorias.Result;
 
                 //Atualiza os dados do card
-                AtualizarNumeroCard(cardGames, games.Count.ToString());
-                AtualizarNumeroCard(cardCategorias, categorias.Count.ToString());
+                //AtualizarNumeroCard(cardGames, games.Count.ToString());
+                //AtualizarNumeroCard(cardCategorias, categorias.Count.ToString());
+
+                cardGamesLblNumero.Text = games.Count.ToString();
+                cardCategoriasLblNumero.Text =  categorias.Count.ToString();
 
                 //Popula o DataGridView(tabela) com os últimos 10 games.
                 gridUltimosGames.Rows.Clear();

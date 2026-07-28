@@ -201,11 +201,11 @@
             // lblSessao
             // 
             lblSessao.AutoSize = true;
-            lblSessao.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSessao.Font = new Font("Century Gothic", 9F, FontStyle.Bold);
             lblSessao.ForeColor = Color.White;
-            lblSessao.Location = new Point(63, 359);
+            lblSessao.Location = new Point(12, 359);
             lblSessao.Name = "lblSessao";
-            lblSessao.Size = new Size(25, 23);
+            lblSessao.Size = new Size(16, 16);
             lblSessao.TabIndex = 0;
             lblSessao.Text = "...";
             // 
@@ -244,6 +244,7 @@
             btnCategorias.Size = new Size(200, 45);
             btnCategorias.TabIndex = 1;
             btnCategorias.Text = "Categorias";
+            btnCategorias.Click += btnCategorias_Click;
             // 
             // guna2Button2
             // 
@@ -280,6 +281,7 @@
             btnDashboard.Size = new Size(200, 45);
             btnDashboard.TabIndex = 1;
             btnDashboard.Text = "Dashboard";
+            btnDashboard.Click += btnDashboard_Click;
             // 
             // pnlConteudo
             // 
