@@ -122,6 +122,7 @@
             btnAtualizar.Size = new Size(108, 45);
             btnAtualizar.TabIndex = 1;
             btnAtualizar.Text = "🔄️ Atualizar";
+            btnAtualizar.Click += btnAtualizar_Click_1;
             // 
             // btnExcluir
             // 
@@ -140,7 +141,7 @@
             btnExcluir.Size = new Size(108, 45);
             btnExcluir.TabIndex = 1;
             btnExcluir.Text = "🗑️ Excluir";
-            btnExcluir.Click += btnExcluir_Click;
+            btnExcluir.Click += btnExcluir_Click_1;
             // 
             // btnEditar
             // 
@@ -159,7 +160,7 @@
             btnEditar.Size = new Size(108, 45);
             btnEditar.TabIndex = 1;
             btnEditar.Text = "✏️ Editar";
-            btnEditar.Click += btnEditar_Click;
+            btnEditar.Click += btnEditar_Click_1;
             // 
             // gridCategorias
             // 
@@ -220,6 +221,7 @@
             btnCancelar.Size = new Size(91, 31);
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "❌ Cancelar";
+            btnCancelar.Click += btnCancelar_Click_1;
             // 
             // btnSalvar
             // 
@@ -238,6 +240,7 @@
             btnSalvar.Size = new Size(98, 31);
             btnSalvar.TabIndex = 2;
             btnSalvar.Text = "💾 Salvar";
+            btnSalvar.Click += btnSalvar_Click_1;
             // 
             // txtNome
             // 
