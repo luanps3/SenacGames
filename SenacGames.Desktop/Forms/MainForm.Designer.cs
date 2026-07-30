@@ -54,7 +54,7 @@
             lblSessao = new Label();
             btnUsuarios = new Guna.UI2.WinForms.Guna2Button();
             btnCategorias = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            btnGames = new Guna.UI2.WinForms.Guna2Button();
             btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             pnlConteudo = new Panel();
             pnlUsuario.SuspendLayout();
@@ -100,7 +100,7 @@
             pnlHeader.Controls.Add(lblTituloApp);
             pnlHeader.Location = new Point(200, 0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(734, 100);
+            pnlHeader.Size = new Size(811, 100);
             pnlHeader.TabIndex = 0;
             // 
             // btnLogout
@@ -115,7 +115,7 @@
             btnLogout.FillColor = Color.Maroon;
             btnLogout.Font = new Font("Segoe UI", 9F);
             btnLogout.ForeColor = Color.White;
-            btnLogout.Location = new Point(631, 36);
+            btnLogout.Location = new Point(709, 36);
             btnLogout.Name = "btnLogout";
             btnLogout.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnLogout.Size = new Size(90, 33);
@@ -173,11 +173,11 @@
             pnlSidebar.Controls.Add(lblSessao);
             pnlSidebar.Controls.Add(btnUsuarios);
             pnlSidebar.Controls.Add(btnCategorias);
-            pnlSidebar.Controls.Add(guna2Button2);
+            pnlSidebar.Controls.Add(btnGames);
             pnlSidebar.Controls.Add(btnDashboard);
             pnlSidebar.Location = new Point(0, 160);
             pnlSidebar.Name = "pnlSidebar";
-            pnlSidebar.Size = new Size(200, 393);
+            pnlSidebar.Size = new Size(200, 460);
             pnlSidebar.TabIndex = 0;
             // 
             // btnPerfil
@@ -197,13 +197,14 @@
             btnPerfil.Size = new Size(200, 45);
             btnPerfil.TabIndex = 1;
             btnPerfil.Text = "Meu Perfil";
+            btnPerfil.Click += btnPerfil_Click;
             // 
             // lblSessao
             // 
             lblSessao.AutoSize = true;
             lblSessao.Font = new Font("Century Gothic", 9F, FontStyle.Bold);
             lblSessao.ForeColor = Color.White;
-            lblSessao.Location = new Point(12, 359);
+            lblSessao.Location = new Point(12, 425);
             lblSessao.Name = "lblSessao";
             lblSessao.Size = new Size(16, 16);
             lblSessao.TabIndex = 0;
@@ -226,6 +227,7 @@
             btnUsuarios.Size = new Size(200, 45);
             btnUsuarios.TabIndex = 1;
             btnUsuarios.Text = "Usuários";
+            btnUsuarios.Click += btnUsuarios_Click;
             // 
             // btnCategorias
             // 
@@ -246,23 +248,24 @@
             btnCategorias.Text = "Categorias";
             btnCategorias.Click += btnCategorias_Click;
             // 
-            // guna2Button2
+            // btnGames
             // 
-            guna2Button2.BackColor = SystemColors.Control;
-            guna2Button2.CustomizableEdges = customizableEdges9;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = Color.FromArgb(0, 77, 147);
-            guna2Button2.Font = new Font("Segoe UI", 9F);
-            guna2Button2.ForeColor = Color.White;
-            guna2Button2.Location = new Point(0, 51);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2Button2.Size = new Size(200, 45);
-            guna2Button2.TabIndex = 1;
-            guna2Button2.Text = "Games";
+            btnGames.BackColor = SystemColors.Control;
+            btnGames.CustomizableEdges = customizableEdges9;
+            btnGames.DisabledState.BorderColor = Color.DarkGray;
+            btnGames.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnGames.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnGames.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnGames.FillColor = Color.FromArgb(0, 77, 147);
+            btnGames.Font = new Font("Segoe UI", 9F);
+            btnGames.ForeColor = Color.White;
+            btnGames.Location = new Point(0, 51);
+            btnGames.Name = "btnGames";
+            btnGames.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnGames.Size = new Size(200, 45);
+            btnGames.TabIndex = 1;
+            btnGames.Text = "Games";
+            btnGames.Click += btnGames_Click;
             // 
             // btnDashboard
             // 
@@ -287,14 +290,14 @@
             // 
             pnlConteudo.Location = new Point(206, 106);
             pnlConteudo.Name = "pnlConteudo";
-            pnlConteudo.Size = new Size(715, 436);
+            pnlConteudo.Size = new Size(805, 501);
             pnlConteudo.TabIndex = 0;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 554);
+            ClientSize = new Size(1023, 619);
             Controls.Add(pnlHeader);
             Controls.Add(pnlConteudo);
             Controls.Add(pnlSidebar);
@@ -328,7 +331,7 @@
         private Guna.UI2.WinForms.Guna2Button btnPerfil;
         private Guna.UI2.WinForms.Guna2Button btnUsuarios;
         private Guna.UI2.WinForms.Guna2Button btnCategorias;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnGames;
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
         private Label lblSidebarSub;
         private Label lblSidebarLogo;

@@ -82,7 +82,7 @@ namespace SenacGames.Desktop.UserControls
                         game.Id,
                         game.Title,
                         game.CategoryName,
-                        game.RealeaseYear,
+                        game.ReleaseYear,
                         game.IsFeatured,
                         game.CreatedAt.ToString("dd/MM/yyyy HH:mm")
                         );

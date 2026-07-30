@@ -102,7 +102,7 @@
             pnlToolbar.Controls.Add(btnNova);
             pnlToolbar.Location = new Point(32, 57);
             pnlToolbar.Name = "pnlToolbar";
-            pnlToolbar.Size = new Size(463, 100);
+            pnlToolbar.Size = new Size(552, 100);
             pnlToolbar.TabIndex = 2;
             // 
             // btnAtualizar
@@ -116,7 +116,7 @@
             btnAtualizar.FillColor = Color.Olive;
             btnAtualizar.Font = new Font("Segoe UI", 9F);
             btnAtualizar.ForeColor = Color.White;
-            btnAtualizar.Location = new Point(349, 25);
+            btnAtualizar.Location = new Point(415, 25);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnAtualizar.Size = new Size(108, 45);
@@ -135,7 +135,7 @@
             btnExcluir.FillColor = Color.FromArgb(192, 0, 0);
             btnExcluir.Font = new Font("Segoe UI", 9F);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(235, 25);
+            btnExcluir.Location = new Point(268, 25);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnExcluir.Size = new Size(108, 45);
@@ -154,7 +154,7 @@
             btnEditar.FillColor = Color.FromArgb(0, 77, 147);
             btnEditar.Font = new Font("Segoe UI", 9F);
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(121, 25);
+            btnEditar.Location = new Point(138, 25);
             btnEditar.Name = "btnEditar";
             btnEditar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnEditar.Size = new Size(108, 45);
@@ -168,7 +168,7 @@
             gridCategorias.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colGameCount });
             gridCategorias.Location = new Point(32, 163);
             gridCategorias.Name = "gridCategorias";
-            gridCategorias.Size = new Size(463, 246);
+            gridCategorias.Size = new Size(552, 318);
             gridCategorias.TabIndex = 3;
             // 
             // colId
@@ -197,7 +197,7 @@
             pnlForm.Controls.Add(lblNome);
             pnlForm.Controls.Add(lblFormTitulo);
             pnlForm.CustomizableEdges = customizableEdges15;
-            pnlForm.Location = new Point(501, 163);
+            pnlForm.Location = new Point(590, 235);
             pnlForm.Name = "pnlForm";
             pnlForm.ShadowDecoration.CustomizableEdges = customizableEdges16;
             pnlForm.Size = new Size(200, 246);
@@ -292,7 +292,7 @@
             Controls.Add(pnlToolbar);
             Controls.Add(lblTitulo);
             Name = "CategoriasUserControl";
-            Size = new Size(715, 436);
+            Size = new Size(805, 501);
             Load += CategoriasUserControl_Load;
             pnlToolbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridCategorias).EndInit();

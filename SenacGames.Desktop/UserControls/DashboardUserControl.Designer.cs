@@ -228,7 +228,7 @@
             gridUltimosGames.Columns.AddRange(new DataGridViewColumn[] { colId, colTitle, colCategoryName, colReleaseYear, colIsFeatured, colCreatedAt });
             gridUltimosGames.Location = new Point(32, 281);
             gridUltimosGames.Name = "gridUltimosGames";
-            gridUltimosGames.Size = new Size(653, 139);
+            gridUltimosGames.Size = new Size(770, 217);
             gridUltimosGames.TabIndex = 3;
             // 
             // colId
@@ -278,7 +278,7 @@
             Controls.Add(lblSubtitulo);
             Controls.Add(lblTitulo);
             Name = "DashboardUserControl";
-            Size = new Size(715, 436);
+            Size = new Size(805, 501);
             Load += DashboardUserControl_Load;
             cardGames.ResumeLayout(false);
             cardGames.PerformLayout();

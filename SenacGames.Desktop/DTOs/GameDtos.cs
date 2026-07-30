@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public int RealeaseYear { get; set; }
+        public int ReleaseYear { get; set; }
         public string CoverImageUrl { get; set; } = string.Empty;
         public int CategoryId { get; set; }
         /// <summary>
@@ -20,7 +20,7 @@
     {
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public int RealeaseYear { get; set; }
+        public int ReleaseYear { get; set; }
         public string CoverImageUrl { get; set; } = string.Empty;
         public int CategoryId { get; set; }
         public bool IsFeatured { get; set; }
@@ -34,7 +34,7 @@
     {
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public int RealeaseYear { get; set; }
+        public int ReleaseYear { get; set; }
         public string CoverImageUrl { get; set; } = string.Empty;
         public int CategoryId { get; set; }
         public bool IsFeatured { get; set; }

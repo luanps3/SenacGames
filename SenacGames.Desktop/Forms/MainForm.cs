@@ -143,10 +143,17 @@ namespace SenacGames.Desktop.Forms
             }
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e) =>
-            Navegar(new DashboardUserControl(), btnDashboard);
+        private void btnDashboard_Click(object sender, EventArgs e) => Navegar(new DashboardUserControl(), btnDashboard);
 
-        private void btnCategorias_Click(object sender, EventArgs e) =>
-            Navegar(new CategoriasUserControl(), btnCategorias);
+        private void btnCategorias_Click(object sender, EventArgs e) => Navegar(new CategoriasUserControl(), btnCategorias);
+
+        private void btnGames_Click(object sender, EventArgs e) => Navegar(new GamesUserControl(), btnGames);
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            Navegar(new UsuariosUserControl(), btnUsuarios);
+        }
+
+        private void btnPerfil_Click(object sender, EventArgs e) => Navegar(new PerfilUserControl(), btnPerfil);
     }
 }
