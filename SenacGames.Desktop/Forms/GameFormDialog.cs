@@ -64,33 +64,37 @@ namespace SenacGames.Desktop.Forms
             InitializeComponent();
         }
 
+
+
         // =====================================================================
         // EVENTO LOAD
         // =====================================================================
 
         private void GameFormDialog_Load(object sender, EventArgs e)
         {
-            // Guard: não executa em tempo de design
+            //Guard
             if (DesignMode) return;
 
             // Configura título baseado no modo (criação/edição)
             this.Text = _gameExistente == null ? "Novo Game" : "Editar Game";
             lblTituloForm.Text = _gameExistente == null ? "➕ Novo Game" : "✏️ Editar Game";
 
-            // Popula o ComboBox de categorias
+            //Popula o ComboBox de categorias
             cmbCategoria.Items.Clear();
             cmbCategoria.Items.Add("Selecione uma categoria...");
             foreach (var cat in _categorias)
                 cmbCategoria.Items.Add(cat.Name);
             cmbCategoria.SelectedIndex = 0;
 
-            // Preenche campos se estiver no modo edição
+            //Preenche campos se estiver no modo edição
             PreencherCampos();
+
         }
 
         // =====================================================================
         // PREENCHIMENTO (MODO EDIÇÃO)
         // =====================================================================
+
         private void PreencherCampos()
         {
             if (_gameExistente == null) return;
@@ -101,10 +105,14 @@ namespace SenacGames.Desktop.Forms
             txtCoverUrl.Text = _gameExistente.CoverImageUrl;
             chkDestaque.Checked = _gameExistente.IsFeatured;
 
-            // Seleciona a categoria correspondente
             var idx = _categorias.FindIndex(c => c.Id == _gameExistente.CategoryId);
-            if (idx >= 0) cmbCategoria.SelectedIndex = idx + 1; // +1 pelo placeholder
+            if (idx >= 0) cmbCategoria.SelectedIndex = idx + 1;
+
         }
+
+
+
+
 
         // =====================================================================
         // SALVAR
@@ -113,22 +121,31 @@ namespace SenacGames.Desktop.Forms
         {
             if (string.IsNullOrWhiteSpace(txtTitulo.Text))
             {
-                MessageBox.Show("Informe o título do game.", "Validação",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Informe o título do game.",
+                    "Validação",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 return;
             }
 
             if (!int.TryParse(txtAno.Text, out int ano) || ano < 1970 || ano > DateTime.Now.Year + 2)
             {
-                MessageBox.Show("Informe um ano de lançamento válido.", "Validação",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                 "Informe um ano válido.",
+                 "Validação",
+                 MessageBoxButtons.OK,
+                 MessageBoxIcon.Warning);
                 return;
             }
 
             if (cmbCategoria.SelectedIndex <= 0)
             {
-                MessageBox.Show("Selecione uma categoria.", "Validação",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                 "Selecione uma categoria",
+                 "Validação",
+                 MessageBoxButtons.OK,
+                 MessageBoxIcon.Warning);
                 return;
             }
 
@@ -161,6 +178,12 @@ namespace SenacGames.Desktop.Forms
             }
 
             this.DialogResult = DialogResult.OK;
+            this.Close();
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

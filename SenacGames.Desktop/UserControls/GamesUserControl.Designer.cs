@@ -133,6 +133,7 @@
             txtPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtPesquisa.Size = new Size(253, 36);
             txtPesquisa.TabIndex = 2;
+            txtPesquisa.KeyUp += txtPesquisa_KeyUp;
             // 
             // btnPesquisar
             // 
@@ -170,6 +171,7 @@
             btnAtualizar.Size = new Size(90, 41);
             btnAtualizar.TabIndex = 1;
             btnAtualizar.Text = "🔄️ Atualizar";
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnExcluir
             // 
@@ -188,6 +190,7 @@
             btnExcluir.Size = new Size(90, 41);
             btnExcluir.TabIndex = 1;
             btnExcluir.Text = "🗑️ Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnEditar
             // 
@@ -206,6 +209,7 @@
             btnEditar.Size = new Size(90, 41);
             btnEditar.TabIndex = 1;
             btnEditar.Text = "✏️ Editar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnNova
             // 
@@ -224,6 +228,7 @@
             btnNova.Size = new Size(90, 41);
             btnNova.TabIndex = 1;
             btnNova.Text = "+ Novo Game";
+            btnNova.Click += btnNova_Click;
             // 
             // lblTitulo
             // 

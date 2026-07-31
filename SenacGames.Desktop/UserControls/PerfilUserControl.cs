@@ -34,7 +34,9 @@ namespace SenacGames.Desktop.UserControls
             InitializeComponent();
         }
 
-    
-        
+        private void PerfilUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
