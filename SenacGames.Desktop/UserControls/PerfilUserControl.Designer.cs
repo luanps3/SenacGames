@@ -227,6 +227,7 @@ namespace SenacGames.Desktop.UserControls
             Name = "PerfilUserControl";
             Padding = new Padding(24);
             Size = new Size(805, 501);
+            Load += PerfilUserControl_Load;
             card.ResumeLayout(false);
             pnlAvatar.ResumeLayout(false);
             ResumeLayout(false);
