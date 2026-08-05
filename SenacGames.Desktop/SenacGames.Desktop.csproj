@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\..\luanps2\SenacGames-full\SenacGames.Desktop\UserControls\UsuariosUserControl.cs" Link="UserControls\UsuariosUserControl.cs" />
+    <Compile Include="..\..\luanps2\SenacGames-full\SenacGames.Desktop\UserControls\UsuariosUserControl.Designer.cs" Link="UserControls\UsuariosUserControl.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.8" />
   </ItemGroup>
 

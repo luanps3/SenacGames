@@ -1,34 +1,12 @@
 // =============================================================================
 // SenacGames.Desktop - Services/UsuariosApiService.cs
 // =============================================================================
-//  CONCEITO: Service de Usuários
-//
-// Gerencia usuários do Identity via API.
-//
-// IMPORTANTE: A API atual não possui endpoints de gerenciamento de usuários
-// (/api/users). Este service está preparado para quando esses endpoints
-// forem adicionados à API (UsersController).
-//
-// Endpoints esperados (a implementar na API se necessário):
-//   GET    /api/users             Listar usuários
-//   GET    /api/users/{id}        Buscar usuário
-//   POST   /api/users             Criar usuário
-//   DELETE /api/users/{id}        Excluir usuário
-//   POST   /api/users/{id}/roles  Atribuir role
-//   POST   /api/users/{id}/reset-password  Redefinir senha
-//
-// Enquanto não existem, o módulo de usuários usa os endpoints de auth disponíveis.
-// =============================================================================
 
 using SenacGames.Desktop.DTOs;
 using SenacGames.Desktop.Helpers;
 
 namespace SenacGames.Desktop.Services
 {
-    /// <summary>
-    /// Serviço de comunicação com os endpoints de Usuários da API.
-    /// Requer perfil Admin para todas as operações.
-    /// </summary>
     public class UsuariosApiService
     {
         private readonly HttpClientHelper _http;
@@ -38,60 +16,69 @@ namespace SenacGames.Desktop.Services
             _http = HttpClientHelper.Instance;
         }
 
-        /// <summary>
-        /// Lista todos os usuários via GET /api/users.
-        /// Endpoint a ser implementado na API (UsersController).
-        /// </summary>
         public async Task<List<UsuarioResponseDto>> GetAllAsync()
         {
             try
             {
-                var usuarios = await _http.GetAsync<List<UsuarioResponseDto>>("/api/users");
+                var usuarios = await _http.GetAsync<List<UsuarioResponseDto>>("/api/usuarios");
                 return usuarios ?? new List<UsuarioResponseDto>();
             }
             catch
             {
-                // Retorna lista vazia se o endpoint ainda não existir
                 return new List<UsuarioResponseDto>();
             }
         }
 
-        /// <summary>
-        /// Cria um novo usuário via POST /api/users.
-        /// </summary>
-        public async Task<(bool Success, UsuarioResponseDto? Usuario, string ErrorMessage)>
-            CreateAsync(CreateUsuarioDto dto)
+        public async Task<(bool Success, UsuarioResponseDto? Usuario, string ErrorMessage)> CreateAsync(CreateUsuarioDto dto)
         {
-            return await _http.PostAsync<UsuarioResponseDto>("/api/users", dto);
+            try
+            {
+                var (success, data, errorMessage) = await _http.PostAsync<UsuarioResponseDto>("/api/usuarios", dto);
+                return (success, data, errorMessage);
+            }
+            catch (Exception ex)
+            {
+                return (false, null, ex.Message);
+            }
         }
 
-        /// <summary>
-        /// Exclui um usuário via DELETE /api/users/{id}.
-        /// </summary>
-        public async Task<(bool Success, string ErrorMessage)> DeleteAsync(string userId)
+        public async Task<(bool Success, UsuarioResponseDto? Usuario, string ErrorMessage)> UpdateAsync(string id, UpdateUsuarioDto dto)
         {
-            return await _http.DeleteAsync($"/api/users/{userId}");
+            try
+            {
+                var (success, data, errorMessage) = await _http.PutAsync<UsuarioResponseDto>($"/api/usuarios/{id}", dto);
+                return (success, data, errorMessage);
+            }
+            catch (Exception ex)
+            {
+                return (false, null, ex.Message);
+            }
         }
 
-        /// <summary>
-        /// Redefine a senha de um usuário.
-        /// </summary>
-        public async Task<(bool Success, string ErrorMessage)> ResetPasswordAsync(
-            ResetPasswordDto dto)
+        public async Task<(bool Success, string ErrorMessage)> DeleteAsync(string id)
         {
-            var (success, _, error) = await _http.PostAsync<object>(
-                $"/api/users/{dto.UserId}/reset-password", dto);
-            return (success, error);
+            try
+            {
+                await _http.DeleteAsync($"/api/usuarios/{id}");
+                return (true, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
         }
 
-        /// <summary>
-        /// Atribui um perfil (role) a um usuário.
-        /// </summary>
-        public async Task<(bool Success, string ErrorMessage)> AssignRoleAsync(AssignRoleDto dto)
+        public async Task<List<string>> GetPerfisAsync()
         {
-            var (success, _, error) = await _http.PostAsync<object>(
-                $"/api/users/{dto.UserId}/roles", dto);
-            return (success, error);
+            try
+            {
+                var perfis = await _http.GetAsync<List<string>>("/api/usuarios/perfis");
+                return perfis ?? new List<string>();
+            }
+            catch
+            {
+                return new List<string>();
+            }
         }
     }
 }

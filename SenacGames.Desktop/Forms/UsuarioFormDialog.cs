@@ -1,71 +1,118 @@
 // =============================================================================
 // SenacGames.Desktop - Forms/UsuarioFormDialog.cs
 // =============================================================================
-//  CONCEITO: Dialog de Formulário de Usuário
-//
-// Formulário auxiliar para criação de novos usuários via API.
-// Coleta: email, senha, confirmação de senha e perfil (role).
-// =============================================================================
 
 using SenacGames.Desktop.DTOs;
+using SenacGames.Desktop.Themes;
 
 namespace SenacGames.Desktop.Forms
 {
-    /// <summary>
-    /// Formulário de criação de novo usuário.
-    /// </summary>
     public partial class UsuarioFormDialog : Form
     {
-        /// <summary>DTO preenchido ao confirmar (OK)</summary>
         public CreateUsuarioDto? CreateDto { get; private set; }
+        public UpdateUsuarioDto? UpdateDto { get; private set; }
 
-        // =====================================================================
-        // CONSTRUTOR
-        // =====================================================================
+        private List<string> _perfis = new();
+        private UsuarioResponseDto? _usuarioExistente;
 
-        /// <summary>
-        /// Construtor padrão sem parâmetros — compatível com o Designer.
-        /// </summary>
         public UsuarioFormDialog()
         {
             InitializeComponent();
         }
 
-        // =====================================================================
-        // EVENTOS
-        // =====================================================================
+        public UsuarioFormDialog(List<string> perfis, UsuarioResponseDto? usuarioExistente = null)
+            : this()
+        {
+            _perfis = perfis;
+            _usuarioExistente = usuarioExistente;
+
+            PreencherComboPerfis();
+
+            if (_usuarioExistente != null)
+            {
+                lblTituloForm.Text = "Editar Usuário";
+                txtNome.Text = _usuarioExistente.Nome;
+                txtEmail.Text = _usuarioExistente.Email;
+                
+                if (cmbPerfil.Items.Contains(_usuarioExistente.Perfil))
+                {
+                    cmbPerfil.SelectedItem = _usuarioExistente.Perfil;
+                }
+            }
+            else
+            {
+                lblTituloForm.Text = "Novo Usuário";
+                if (cmbPerfil.Items.Count > 0)
+                    cmbPerfil.SelectedIndex = 0;
+            }
+
+        }
+
+        private void PreencherComboPerfis()
+        {
+            cmbPerfil.Items.Clear();
+            foreach (var p in _perfis)
+            {
+                cmbPerfil.Items.Add(p);
+            }
+        }
 
         private void BtnSalvar_Click(object? sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(txtNome.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                MessageBox.Show("Informe o e-mail.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nome e Email são obrigatórios.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtSenha.Text) || txtSenha.Text.Length < 6)
+            if (_usuarioExistente == null && string.IsNullOrWhiteSpace(txtSenha.Text))
             {
-                MessageBox.Show("A senha deve ter pelo menos 6 caracteres.", "Validação",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Senha é obrigatória para novos usuários.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (txtSenha.Text != txtConfirmar.Text)
+            if (txtSenha.Text != txtConfirmarSenha.Text)
             {
-                MessageBox.Show("As senhas não coincidem.", "Validação",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("As senhas não coincidem.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            CreateDto = new CreateUsuarioDto
+            if (cmbPerfil.SelectedItem == null)
             {
-                Email = txtEmail.Text.Trim(),
-                Password = txtSenha.Text,
-                ConfirmPassword = txtConfirmar.Text,
-                Role = cmbPerfil.SelectedItem?.ToString() ?? "User"
-            };
+                MessageBox.Show("Selecione um perfil.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (_usuarioExistente == null)
+            {
+                CreateDto = new CreateUsuarioDto
+                {
+                    Nome = txtNome.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    Senha = txtSenha.Text,
+                    ConfirmarSenha = txtConfirmarSenha.Text,
+                    Perfil = cmbPerfil.SelectedItem.ToString()!
+                };
+            }
+            else
+            {
+                UpdateDto = new UpdateUsuarioDto
+                {
+                    Nome = txtNome.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    Senha = string.IsNullOrEmpty(txtSenha.Text) ? null : txtSenha.Text,
+                    ConfirmarSenha = string.IsNullOrEmpty(txtConfirmarSenha.Text) ? null : txtConfirmarSenha.Text,
+                    Perfil = cmbPerfil.SelectedItem.ToString()!
+                };
+            }
 
             this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void BtnCancelar_Click(object? sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

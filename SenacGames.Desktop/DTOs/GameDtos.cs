@@ -1,5 +1,25 @@
-﻿namespace SenacGames.Desktop.DTOs
+// =============================================================================
+// SenacGames.Desktop - DTOs/GameDtos.cs
+// =============================================================================
+//  CONCEITO: DTOs de Games do Desktop
+//
+// Estes DTOs espelham os contratos da API de Games:
+//   GET    /api/games         retorna lista de GameResponseDto
+//   GET    /api/games/{id}    retorna GameResponseDto
+//   POST   /api/games         recebe CreateGameDto
+//   PUT    /api/games/{id}    recebe UpdateGameDto
+//   DELETE /api/games/{id}    sem corpo
+//
+// IMPORTANTE: As propriedades devem ter os MESMOS NOMES que os campos JSON
+// retornados pela API (System.Text.Json é case-insensitive por padrão).
+// =============================================================================
+
+namespace SenacGames.Desktop.DTOs
 {
+    /// <summary>
+    /// DTO para representar um Game retornado pela API.
+    /// Usado para leitura (listagem, visualização).
+    /// </summary>
     public class GameResponseDto
     {
         public int Id { get; set; }
@@ -8,15 +28,19 @@
         public int ReleaseYear { get; set; }
         public string CoverImageUrl { get; set; } = string.Empty;
         public int CategoryId { get; set; }
-        /// <summary>
-        /// Nome da categoria do jogo, retornado pela API para exibição no DataGridView
-        /// </summary>
+
+        /// <summary>Nome da categoria (já resolvido pela API via JOIN)</summary>
         public string CategoryName { get; set; } = string.Empty;
+
         public bool IsFeatured { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 
-    public class  CreateGameDto
+    /// <summary>
+    /// DTO para criação de um novo Game.
+    /// Enviado no corpo do POST /api/games.
+    /// </summary>
+    public class CreateGameDto
     {
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
@@ -27,8 +51,8 @@
     }
 
     /// <summary>
-    /// DTO para atualizar um jogo existente.
-    /// Enviado no corpo do PUT /api/games/{id}
+    /// DTO para atualização de um Game existente.
+    /// Enviado no corpo do PUT /api/games/{id}.
     /// </summary>
     public class UpdateGameDto
     {
@@ -39,7 +63,4 @@
         public int CategoryId { get; set; }
         public bool IsFeatured { get; set; }
     }
-
-
-
 }

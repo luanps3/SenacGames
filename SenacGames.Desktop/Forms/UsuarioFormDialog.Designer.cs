@@ -1,22 +1,13 @@
 // =============================================================================
 // SenacGames.Desktop - Forms/UsuarioFormDialog.Designer.cs
 // =============================================================================
-// ️ ARQUIVO GERADO PELO DESIGNER — NÃO EDITE MANUALMENTE
-// Toda lógica de negócio deve estar em UsuarioFormDialog.cs
-// =============================================================================
 
 namespace SenacGames.Desktop.Forms
 {
     partial class UsuarioFormDialog
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -24,193 +15,161 @@ namespace SenacGames.Desktop.Forms
             base.Dispose(disposing);
         }
 
-        // =====================================================================
-        // DECLARAÇÕES DOS CONTROLES — todos como campos privados
-        // =====================================================================
-        private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblTituloForm;
+        private System.Windows.Forms.Label lblCampNome;
+        private Guna.UI2.WinForms.Guna2TextBox txtNome;
+        private System.Windows.Forms.Label lblCampEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
-        private System.Windows.Forms.Label lblSenha;
+        private System.Windows.Forms.Label lblCampSenha;
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
-        private System.Windows.Forms.Label lblConf;
-        private Guna.UI2.WinForms.Guna2TextBox txtConfirmar;
-        private System.Windows.Forms.Label lblPerfil;
+        private System.Windows.Forms.Label lblCampConfirmarSenha;
+        private Guna.UI2.WinForms.Guna2TextBox txtConfirmarSenha;
+        private System.Windows.Forms.Label lblCampPerfil;
         private System.Windows.Forms.ComboBox cmbPerfil;
         private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
 
-        // =====================================================================
-        // INITIALIZECOMPONENT — formato padrão do Windows Forms Designer
-        // =====================================================================
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-
-            // ─── Instanciar todos os controles ────────────────────────────────
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblTituloForm = new System.Windows.Forms.Label();
+            this.lblCampNome = new System.Windows.Forms.Label();
+            this.txtNome = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblCampEmail = new System.Windows.Forms.Label();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lblSenha = new System.Windows.Forms.Label();
+            this.lblCampSenha = new System.Windows.Forms.Label();
             this.txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lblConf = new System.Windows.Forms.Label();
-            this.txtConfirmar = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lblPerfil = new System.Windows.Forms.Label();
+            this.lblCampConfirmarSenha = new System.Windows.Forms.Label();
+            this.txtConfirmarSenha = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblCampPerfil = new System.Windows.Forms.Label();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
             this.btnSalvar = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancelar = new Guna.UI2.WinForms.Guna2Button();
-
-            // SuspendLayout
             this.SuspendLayout();
 
-            // ─── lblTitulo ────────────────────────────────────────────────────
-            this.lblTitulo.AutoSize = false;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(0, 75, 135);
-            this.lblTitulo.Location = new System.Drawing.Point(24, 16);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(400, 36);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "👤 Novo Usuário";
+            // lblTituloForm
+            this.lblTituloForm.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblTituloForm.ForeColor = System.Drawing.Color.FromArgb(0, 75, 135);
+            this.lblTituloForm.Location = new System.Drawing.Point(24, 16);
+            this.lblTituloForm.Name = "lblTituloForm";
+            this.lblTituloForm.Size = new System.Drawing.Size(460, 36);
+            this.lblTituloForm.Text = "Usuário";
 
-            // ─── lblEmail ─────────────────────────────────────────────────────
-            this.lblEmail.AutoSize = false;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
-            this.lblEmail.Location = new System.Drawing.Point(24, 64);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(400, 18);
-            this.lblEmail.TabIndex = 1;
-            this.lblEmail.Text = "E-MAIL *";
+            // lblCampNome
+            this.lblCampNome.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblCampNome.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
+            this.lblCampNome.Location = new System.Drawing.Point(24, 64);
+            this.lblCampNome.Name = "lblCampNome";
+            this.lblCampNome.Size = new System.Drawing.Size(460, 20);
+            this.lblCampNome.Text = "NOME *";
 
-            // ─── txtEmail ─────────────────────────────────────────────────────
-            this.txtEmail.BorderColor = System.Drawing.Color.FromArgb(224, 228, 235);
+            // txtNome
+            this.txtNome.BorderRadius = 6;
+            this.txtNome.Location = new System.Drawing.Point(24, 86);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(460, 40);
+
+            // lblCampEmail
+            this.lblCampEmail.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblCampEmail.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
+            this.lblCampEmail.Location = new System.Drawing.Point(24, 136);
+            this.lblCampEmail.Name = "lblCampEmail";
+            this.lblCampEmail.Size = new System.Drawing.Size(460, 20);
+            this.lblCampEmail.Text = "EMAIL *";
+
+            // txtEmail
             this.txtEmail.BorderRadius = 6;
-            this.txtEmail.FillColor = System.Drawing.Color.FromArgb(245, 247, 250);
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtEmail.Location = new System.Drawing.Point(24, 84);
+            this.txtEmail.Location = new System.Drawing.Point(24, 158);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PlaceholderText = "usuario@email.com";
-            this.txtEmail.Size = new System.Drawing.Size(400, 40);
-            this.txtEmail.TabIndex = 2;
+            this.txtEmail.Size = new System.Drawing.Size(460, 40);
 
-            // ─── lblSenha ─────────────────────────────────────────────────────
-            this.lblSenha.AutoSize = false;
-            this.lblSenha.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.lblSenha.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
-            this.lblSenha.Location = new System.Drawing.Point(24, 136);
-            this.lblSenha.Name = "lblSenha";
-            this.lblSenha.Size = new System.Drawing.Size(400, 18);
-            this.lblSenha.TabIndex = 3;
-            this.lblSenha.Text = "SENHA *";
+            // lblCampSenha
+            this.lblCampSenha.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblCampSenha.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
+            this.lblCampSenha.Location = new System.Drawing.Point(24, 208);
+            this.lblCampSenha.Name = "lblCampSenha";
+            this.lblCampSenha.Size = new System.Drawing.Size(220, 20);
+            this.lblCampSenha.Text = "SENHA";
 
-            // ─── txtSenha ─────────────────────────────────────────────────────
-            this.txtSenha.BorderColor = System.Drawing.Color.FromArgb(224, 228, 235);
+            // txtSenha
             this.txtSenha.BorderRadius = 6;
-            this.txtSenha.FillColor = System.Drawing.Color.FromArgb(245, 247, 250);
-            this.txtSenha.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtSenha.Location = new System.Drawing.Point(24, 156);
+            this.txtSenha.Location = new System.Drawing.Point(24, 230);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PlaceholderText = "••••••••";
-            this.txtSenha.Size = new System.Drawing.Size(400, 40);
-            this.txtSenha.TabIndex = 4;
-            this.txtSenha.UseSystemPasswordChar = true;
+            this.txtSenha.PasswordChar = '*';
+            this.txtSenha.Size = new System.Drawing.Size(220, 40);
 
-            // ─── lblConf ──────────────────────────────────────────────────────
-            this.lblConf.AutoSize = false;
-            this.lblConf.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.lblConf.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
-            this.lblConf.Location = new System.Drawing.Point(24, 208);
-            this.lblConf.Name = "lblConf";
-            this.lblConf.Size = new System.Drawing.Size(400, 18);
-            this.lblConf.TabIndex = 5;
-            this.lblConf.Text = "CONFIRMAR SENHA *";
+            // lblCampConfirmarSenha
+            this.lblCampConfirmarSenha.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblCampConfirmarSenha.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
+            this.lblCampConfirmarSenha.Location = new System.Drawing.Point(264, 208);
+            this.lblCampConfirmarSenha.Name = "lblCampConfirmarSenha";
+            this.lblCampConfirmarSenha.Size = new System.Drawing.Size(220, 20);
+            this.lblCampConfirmarSenha.Text = "CONFIRMAR SENHA";
 
-            // ─── txtConfirmar ─────────────────────────────────────────────────
-            this.txtConfirmar.BorderColor = System.Drawing.Color.FromArgb(224, 228, 235);
-            this.txtConfirmar.BorderRadius = 6;
-            this.txtConfirmar.FillColor = System.Drawing.Color.FromArgb(245, 247, 250);
-            this.txtConfirmar.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtConfirmar.Location = new System.Drawing.Point(24, 228);
-            this.txtConfirmar.Name = "txtConfirmar";
-            this.txtConfirmar.PlaceholderText = "••••••••";
-            this.txtConfirmar.Size = new System.Drawing.Size(400, 40);
-            this.txtConfirmar.TabIndex = 6;
-            this.txtConfirmar.UseSystemPasswordChar = true;
+            // txtConfirmarSenha
+            this.txtConfirmarSenha.BorderRadius = 6;
+            this.txtConfirmarSenha.Location = new System.Drawing.Point(264, 230);
+            this.txtConfirmarSenha.Name = "txtConfirmarSenha";
+            this.txtConfirmarSenha.PasswordChar = '*';
+            this.txtConfirmarSenha.Size = new System.Drawing.Size(220, 40);
 
-            // ─── lblPerfil ────────────────────────────────────────────────────
-            this.lblPerfil.AutoSize = false;
-            this.lblPerfil.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.lblPerfil.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
-            this.lblPerfil.Location = new System.Drawing.Point(24, 280);
-            this.lblPerfil.Name = "lblPerfil";
-            this.lblPerfil.Size = new System.Drawing.Size(400, 18);
-            this.lblPerfil.TabIndex = 7;
-            this.lblPerfil.Text = "PERFIL (ROLE)";
+            // lblCampPerfil
+            this.lblCampPerfil.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblCampPerfil.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
+            this.lblCampPerfil.Location = new System.Drawing.Point(24, 280);
+            this.lblCampPerfil.Name = "lblCampPerfil";
+            this.lblCampPerfil.Size = new System.Drawing.Size(460, 20);
+            this.lblCampPerfil.Text = "PERFIL *";
 
-            // ─── cmbPerfil ────────────────────────────────────────────────────
-            this.cmbPerfil.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            // cmbPerfil
             this.cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbPerfil.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cmbPerfil.Items.AddRange(new object[] { "User", "Admin" });
-            this.cmbPerfil.Location = new System.Drawing.Point(24, 300);
+            this.cmbPerfil.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbPerfil.Location = new System.Drawing.Point(24, 302);
             this.cmbPerfil.Name = "cmbPerfil";
-            this.cmbPerfil.SelectedIndex = 0;
-            this.cmbPerfil.Size = new System.Drawing.Size(400, 38);
-            this.cmbPerfil.TabIndex = 8;
+            this.cmbPerfil.Size = new System.Drawing.Size(460, 31);
 
-            // ─── btnSalvar ────────────────────────────────────────────────────
-            this.btnSalvar.BorderRadius = 8;
-            this.btnSalvar.FillColor = System.Drawing.Color.FromArgb(40, 167, 69);
-            this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(24, 358);
+            // btnSalvar
+            this.btnSalvar.BorderRadius = 6;
+            this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSalvar.Location = new System.Drawing.Point(224, 360);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(160, 42);
-            this.btnSalvar.TabIndex = 9;
-            this.btnSalvar.Text = "💾 Criar Usuário";
+            this.btnSalvar.Size = new System.Drawing.Size(120, 45);
+            this.btnSalvar.Text = "SALVAR";
+            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
 
-            // ─── btnCancelar ──────────────────────────────────────────────────
-            this.btnCancelar.BorderColor = System.Drawing.Color.FromArgb(224, 228, 235);
-            this.btnCancelar.BorderRadius = 8;
-            this.btnCancelar.BorderThickness = 1;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.FillColor = System.Drawing.Color.FromArgb(245, 247, 250);
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(51, 61, 75);
-            this.btnCancelar.Location = new System.Drawing.Point(200, 358);
+            // btnCancelar
+            this.btnCancelar.BorderRadius = 6;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.Location = new System.Drawing.Point(364, 360);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(100, 42);
-            this.btnCancelar.TabIndex = 10;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 45);
+            this.btnCancelar.Text = "CANCELAR";
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
 
-            // ─── Configuração do Form ─────────────────────────────────────────
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            // UsuarioFormDialog
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(460, 420);
-            this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.lblSenha);
-            this.Controls.Add(this.txtSenha);
-            this.Controls.Add(this.lblConf);
-            this.Controls.Add(this.txtConfirmar);
-            this.Controls.Add(this.lblPerfil);
-            this.Controls.Add(this.cmbPerfil);
-            this.Controls.Add(this.btnSalvar);
+            this.ClientSize = new System.Drawing.Size(508, 430);
             this.Controls.Add(this.btnCancelar);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.cmbPerfil);
+            this.Controls.Add(this.lblCampPerfil);
+            this.Controls.Add(this.txtConfirmarSenha);
+            this.Controls.Add(this.lblCampConfirmarSenha);
+            this.Controls.Add(this.txtSenha);
+            this.Controls.Add(this.lblCampSenha);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.lblCampEmail);
+            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.lblCampNome);
+            this.Controls.Add(this.lblTituloForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UsuarioFormDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Novo Usuário";
-
-            // ─── Eventos ──────────────────────────────────────────────────────
-            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
-
-            // ResumeLayout
+            this.Text = "Usuário";
             this.ResumeLayout(false);
             this.PerformLayout();
         }
