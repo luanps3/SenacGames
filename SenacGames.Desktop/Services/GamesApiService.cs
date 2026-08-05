@@ -1,4 +1,4 @@
-﻿// =============================================================================
+// =============================================================================
 // SenacGames.Desktop - Services/GamesApiService.cs
 // =============================================================================
 //  CONCEITO: Service de Games
@@ -22,19 +22,23 @@ using SenacGames.Desktop.Helpers;
 
 namespace SenacGames.Desktop.Services
 {
+    /// <summary>
+    /// Serviço de comunicação com os endpoints de Games da API.
+    /// </summary>
     public class GamesApiService
     {
         private readonly HttpClientHelper _http;
 
-        //Construtor - Inicializa junto com o código quando o mesmo é chamado.
         public GamesApiService()
         {
             _http = HttpClientHelper.Instance;
         }
 
-        ///<summary>
-        /// Lista todas os ganes via GET /api/games
+        /// <summary>
+        /// Lista todos os games via GET /api/games.
+        /// Disponível para qualquer usuário autenticado.
         /// </summary>
+        /// <returns>Lista de games ou lista vazia em caso de erro</returns>
         public async Task<List<GameResponseDto>> GetAllAsync()
         {
             try
@@ -49,9 +53,9 @@ namespace SenacGames.Desktop.Services
         }
 
         /// <summary>
-        /// Busca um game específico por ID via GET /api/games/{id} 
+        /// Busca um game específico por ID via GET /api/games/{id}.
         /// </summary>
-        public async Task<GameResponseDto> GetByIdAsync(int id)
+        public async Task<GameResponseDto?> GetByIdAsync(int id)
         {
             return await _http.GetAsync<GameResponseDto>($"/api/games/{id}");
         }
@@ -87,7 +91,4 @@ namespace SenacGames.Desktop.Services
             return await _http.DeleteAsync($"/api/games/{id}");
         }
     }
-
-   
-    
 }

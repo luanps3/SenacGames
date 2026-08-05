@@ -1,4 +1,4 @@
-﻿// =============================================================================
+// =============================================================================
 // SenacGames.Desktop - Services/AuthApiService.cs
 // =============================================================================
 //  CONCEITO: Service de Autenticação
@@ -27,12 +27,16 @@ using SenacGames.Desktop.Helpers;
 namespace SenacGames.Desktop.Services
 {
     /// <summary>
-    /// Serviço de comunicação com os endpoints de autenticação da API
+    /// Serviço de comunicação com os endpoints de autenticação da API.
     /// </summary>
     public class AuthApiService
     {
+        // Referência ao helper HTTP (singleton)
         private readonly HttpClientHelper _http;
 
+        /// <summary>
+        /// Construtor: obtém a instância singleton do HttpClientHelper.
+        /// </summary>
         public AuthApiService()
         {
             _http = HttpClientHelper.Instance;
@@ -51,28 +55,32 @@ namespace SenacGames.Desktop.Services
         /// <param name="email">E-mail do usuário</param>
         /// <param name="password">Senha do usuário</param>
         /// <returns>Tupla com sucesso, dados do usuário e mensagem de erro</returns>
-        public async Task<(bool Sucesso, UserResponseDto? User, string ErrorMessage)> LoginAsync(string email, string password)
+        public async Task<(bool Success, UserResponseDto? User, string ErrorMessage)>
+            LoginAsync(string email, string password)
         {
+            // Cria o objeto de requisição (DTO de login)
             var loginDto = new LoginRequestDto
             {
                 Email = email,
                 Password = password
             };
 
-            var (sucesso, data, error) = await _http.PostAsync<UserResponseDto>(
+            // Envia para POST /api/auth/login
+            var (success, data, error) = await _http.PostAsync<UserResponseDto>(
                 "/api/auth/login", loginDto);
 
-            return (sucesso, data, error);
+            return (success, data, error);
         }
 
         /// <summary>
         /// Realiza o logout chamando POST /api/auth/logout.
-        /// Também limpa os cookies de sessão localmente
+        /// Também limpa os cookies de sessão localmente.
         /// </summary>
-        public async Task<(bool Sucesso, string ErrorMessage)>LogoutAsync()
+        public async Task<(bool Success, string ErrorMessage)> LogoutAsync()
         {
             var result = await _http.PostEmptyAsync("/api/auth/logout");
 
+            // Limpa os cookies locais independentemente do resultado da API
             _http.ClearCookies();
 
             return result;
@@ -80,7 +88,7 @@ namespace SenacGames.Desktop.Services
 
         /// <summary>
         /// Busca os dados do usuário autenticado via GET /api/auth/me.
-        /// Útil para verificar se a sessão ainda está ativa
+        /// Útil para verificar se a sessão ainda está ativa.
         /// </summary>
         public async Task<UserResponseDto?> GetCurrentUserAsync()
         {
@@ -90,7 +98,7 @@ namespace SenacGames.Desktop.Services
         /// <summary>
         /// Registra um novo usuário via POST /api/auth/register.
         /// </summary>
-        public async Task<(bool Sucesso, string ErrorMessage)> RegisterAsync(
+        public async Task<(bool Success, string ErrorMessage)> RegisterAsync(
             string email, string password, string confirmPassword)
         {
             var dto = new RegisterRequestDto

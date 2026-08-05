@@ -1,33 +1,59 @@
-﻿using SenacGames.UI.Helpers;
+// =============================================================================
+// SenacGames.Desktop - Helpers/AppConfig.cs
+// =============================================================================
+//  CONCEITO: Configuração da Aplicação Desktop
+//
+// Fornece acesso centralizado às configurações da aplicação.
+//
+// A URL da API agora é resolvida pelo ApiEndpointResolver, que:
+//   1. Lê automaticamente o launchSettings.json do SenacGames.API
+//   2. Usa appsettings.json como fallback
+//
+// IMPORTANTE: Para mudar a URL da API:
+//   - Em desenvolvimento: normalmente automático via launchSettings.json
+//   - Manualmente: edite appsettings.json  ApiSettings.BaseUrl
+//   - Em produção: configure ApiSettings.BaseUrl com a URL de produção
+// =============================================================================
+
 using System.Text.Json;
-using static System.Collections.Specialized.BitVector32;
 
 namespace SenacGames.Desktop.Helpers
 {
+    /// <summary>
+    /// Fornece acesso estático às configurações da aplicação.
+    /// A URL da API é resolvida automaticamente pelo <see cref="ApiEndpointResolver"/>.
+    /// </summary>
     public static class AppConfig
     {
+        // Cache das configurações do appsettings.json
         private static JsonDocument? _config;
 
-        ///<summary>
-        ///URL base da API, Exemplo: "https://localhost:5223"
-        ///
-        /// Resolvida na seguinte ordem pelo ApiEndPointResolver:
-        /// 1. lauchSettings.json do SenacGames.API 
-        /// 2. appsettings.json ApiSessting.BaseUrl (fallback configuravel) fallback: é o valor default caso não seja encontrado no appsettings.json
-        /// 3. String vazia se não encontrada (Program.cs exibe mensagem)
-        ///</summary>   
-        ///
+        // =====================================================================
+        // PROPRIEDADES DE CONFIGURAÇÃO
+        // =====================================================================
 
+        /// <summary>
+        /// URL base da API. Exemplo: "http://localhost:5223"
+        ///
+        /// Resolvida na seguinte ordem pelo ApiEndpointResolver:
+        ///   1. launchSettings.json do SenacGames.API (desenvolvimento automático)
+        ///   2. appsettings.json  ApiSettings.BaseUrl (fallback configurável)
+        ///   3. String vazia se não encontrada (Program.cs exibe mensagem amigável)
+        ///
+        /// Nunca contém porta hardcoded no código.
+        /// </summary>
         public static string ApiBaseUrl =>
-                 //?? : Coalescência nula, retorna o valor à esquerda se não for nulo, caso contrário retorna o valor à direita
-                 ApiEndpointResolver.Resolve() ?? string.Empty;
+            ApiEndpointResolver.Resolve() ?? string.Empty;
 
+        /// <summary>Nome do aplicativo.</summary>
         public static string AppName =>
-              GetNestedValue("AppSettings", "AppName") ?? "SenacGames Desktop";
+            GetNestedValue("AppSettings", "AppName") ?? "SenacGames Desktop";
 
+        /// <summary>Versão do aplicativo.</summary>
         public static string Version =>
-             GetNestedValue("AppSettings", "Version") ?? "1.0.0";
+            GetNestedValue("AppSettings", "Version") ?? "1.0.0";
 
+        /// <summary>Timeout das requisições HTTP em segundos.</summary>
         public static int Timeout
         {
             get
@@ -37,10 +63,18 @@ namespace SenacGames.Desktop.Helpers
             }
         }
 
+        // =====================================================================
+        // MÉTODOS PRIVADOS — Leitura do appsettings.json
+        // =====================================================================
 
+        /// <summary>
+        /// Carrega o arquivo appsettings.json (com cache).
+        /// Usado apenas para AppName, Version e Timeout —
+        /// a URL da API é resolvida pelo ApiEndpointResolver.
+        /// </summary>
         private static JsonDocument GetConfig()
         {
-            if(_config != null) return _config;
+            if (_config != null) return _config;
 
             try
             {
@@ -63,7 +97,6 @@ namespace SenacGames.Desktop.Helpers
             }
 
             return _config ?? JsonDocument.Parse("{}");
-
         }
 
         private static string? GetNestedValue(string section, string key)
@@ -77,9 +110,12 @@ namespace SenacGames.Desktop.Helpers
             }
             catch { }
             return null;
-
         }
 
+        /// <summary>
+        /// Remove comentários de linha // do JSON.
+        /// O appsettings.json do VS pode conter comentários não-padrão.
+        /// </summary>
         private static string RemoveJsonComments(string json)
         {
             var lines = json.Split('\n');
